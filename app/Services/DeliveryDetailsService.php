@@ -7,12 +7,13 @@ use App\Contracts\DeliveryDetailsContract;
 use App\Contracts\DeliveryServiceContract;
 use App\Data\DeliveryDetailsDTO;
 use App\Data\ShippingDetailsDTO;
+use http\Exception\InvalidArgumentException;
 
 abstract class DeliveryDetailsService implements DeliveryDetailsContract
 {
-    public function __construct(
-        public ShippingDetailsDTO $shippingDetails
-    ){}
+
+    public function __construct(protected ShippingDetailsDTO $shippingDetails)
+    {}
 
     public function getDetails(): DeliveryDetailsDTO
     {

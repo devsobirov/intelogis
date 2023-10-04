@@ -15,5 +15,7 @@ class ShippingDetailsDTO implements \App\Contracts\DataTransferObjectContract
         $this->sourceKladr = $data['sourceKladr'];
         $this->targetKladr = $data['targetKladr'];
         $this->weight = $data['weight'];
+
+        return $this;
     }
 }

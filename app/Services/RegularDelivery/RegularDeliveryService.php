@@ -19,8 +19,8 @@ class RegularDeliveryService extends DeliveryService
 
     public function getDeliveryPrice(): float
     {
-        if (isset($this->response['price'])) {
-            return $this->calcCoefficientBasedPrice($this->response['price']);
+        if (isset($this->response['coefficient'])) {
+            return $this->calcCoefficientBasedPrice($this->response['coefficient']);
         }
         return 0;
     }
