@@ -3,12 +3,29 @@
 namespace App\Services;
 
 
+use App\Contracts\DeliveryDetailsContract;
 use App\Contracts\DeliveryServiceContract;
 use App\Data\DeliveryDetailsDTO;
+use App\Data\ShippingDetailsDTO;
 
-abstract class DeliveryDetailsService
+abstract class DeliveryDetailsService implements DeliveryDetailsContract
 {
-    abstract public function getDetails(): DeliveryDetailsDTO;
+    public function __construct(
+        public ShippingDetailsDTO $shippingDetails
+    ){}
 
-    abstract public function getDeliveryService(): DeliveryServiceContract;
+    public function getDetails(): DeliveryDetailsDTO
+    {
+        $deliveryService = $this->createDeliveryService();
+        $deliveryService->setShippingDetails($this->shippingDetails);
+        $deliveryService->requestTransportCompany();
+
+        return (new DeliveryDetailsDTO())->fromArray([
+            'price' => $deliveryService->getDeliveryPrice(),
+            'date' => $deliveryService->getDeliveryDate(),
+            'error' => $deliveryService->getErrors()
+        ]);
+    }
+
+    abstract public function createDeliveryService(): DeliveryServiceContract;
 }
