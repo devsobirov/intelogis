@@ -16,7 +16,8 @@ _Модуль расчета стоимости доставки_
 cd .../php-executable-directory
 git clone current_repository_link ./intelogis
 cd intelogis
-composer install
+composer install 
+// так же, можно просто composer dump-autoload ;)
 ```
 
 Клиентский код находится в `index.php`.
