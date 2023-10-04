@@ -1,0 +1,17 @@
+{
+    "name": "devsobirov/intelogis",
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    },
+    "authors": [
+        {
+            "name": "devsobirov",
+            "email": "devsobirov@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^8.0"
+    }
+}
