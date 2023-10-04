@@ -10,6 +10,12 @@ class FastDeliveryService extends DeliveryService
 
     const CLOSING_HOUR = 18;
 
+    /**
+     * Если рабочий день закрыт, укажем дату доставки на сделедущий день,
+     * так как заказ будет принят уже завтра
+     * @return string
+     *
+     */
     public function getDeliveryDate(): string
     {
         if (isset($this->response['date'])) {
